@@ -12,16 +12,19 @@
             <iframe id="music" frameborder="no" border="0" marginwidth="0" marginheight="0"
                                     src="http://music.163.com/outchain/player?type=3&id=795909411&auto=1&height=66"></iframe>
         </div>
-        <h4 class="text-center">jjjj</h4>
+        <h4 class="text-center" id="title">jjjj</h4>
     </div>
 <script src="js/jquery-3.2.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </body>
 <script type = "text/javascript">
-    var songs = $.parseJSON('[{"id":"jjj"}]');
+    var index = 0;
+    var songs;
     $(function(){
         $.getJSON("./mtyyw.json", function (data) {
             songs = data;
+            $("#music").attr("src", songs[index]["website"]);
+            $("#title").attr("src", songs[index]["title"]);
         });
     });
     var i = 0;
@@ -31,7 +34,9 @@
             i = 0;
         }, 500);
         if (i > 1) {
-            $("#music").attr("src", songs[Math.floor((Math.random()*songs.length)))]["website"]);
+            index = Math.floor((Math.random()*songs.length));
+            $("#music").attr("src", songs[index]["website"]);
+            $("#title").attr("src", songs[index]["title"]);
             i = 0;
         }
     });
