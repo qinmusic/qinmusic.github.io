@@ -3,18 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>轻忆•音乐</title>
-    <script src="jquery-3.2.1.min.js"></script>
+    <meta name="viewport"content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
+    <div id="content">
+        <div class="text-center">
+            <iframe id="music" frameborder="no" border="0" marginwidth="0" marginheight="0"
+                                    src="http://music.163.com/outchain/player?type=3&id=795909411&auto=1&height=66"></iframe>
+        </div>
+        <h4 class="text-center">jjjj</h4>
+    </div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 <script type = "text/javascript">
-    var songs;
+    var songs = $.parseJSON('[{"id":"jjj"}]');
     $(function(){
         $.getJSON("./mtyyw.json", function (data) {
             songs = data;
-            alert(songs);
         });
+    });
+    var i = 0;
+    $('body').click(function () {
+        i++;
+        setTimeout(function () {
+            i = 0;
+        }, 500);
+        if (i > 1) {
+            $("#music").attr("src", songs[Math.floor((Math.random()*songs.length)))]["website"]);
+            i = 0;
+        }
     });
 </script>
 </html>
