@@ -34,7 +34,7 @@
         if (i > 1) {
             index = Math.floor((Math.random()*songs.length));
             $("#music").attr("src", songs[index]["website"]);
-            $("#title").attr("src", songs[index]["title"]);
+            $("#title").text(songs[index]["title"]);
             i = 0;
         }
     });
